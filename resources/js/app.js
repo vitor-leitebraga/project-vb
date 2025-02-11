@@ -6,8 +6,9 @@ import { createInertiaApp } from "@inertiajs/vue3";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { ZiggyVue } from "ziggy-js";
 import {createPinia} from "pinia"
+import MasonryWall from "@yeger/vue-masonry-wall"
 
-const appName = import.meta.env.VITE_APP_NAME || "Laravel";
+const appName = import.meta.env.VITE_APP_NAME || "Curotec VB";
 
 createInertiaApp({
 	title: (title) => `${title} - ${appName}`,
@@ -17,6 +18,7 @@ createInertiaApp({
 			.use(plugin)
 			.use(ZiggyVue)
 			.use(createPinia())
+			.use(MasonryWall)
 			.mount(el);
 	},
 	progress: {

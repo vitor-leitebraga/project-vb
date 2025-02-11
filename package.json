@@ -22,6 +22,7 @@
         "vue": "^3.2.31"
     },
     "dependencies": {
+        "@yeger/vue-masonry-wall": "^5.0.18",
         "pinia": "^2.3.1"
     }
 }
