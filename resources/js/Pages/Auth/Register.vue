@@ -1,57 +1,59 @@
 <template>
 	<AppLayout title="Register">
-		<form
-			class="flex flex-col gap-y-2 max-w-lg w-full bg-gray-600 rounded-xl p-4"
-			@submit.prevent="submit"
-		>
-			<InputText
-				v-model="form.name"
-				label="Name"
+		<div class="flex items-center max-w-lg w-full">
+			<form
+				class="flex flex-col gap-y-2 max-w-lg w-full bg-gray-600 rounded-xl p-4"
+				@submit.prevent="submit"
 			>
-				<InputError :message="form.errors.name" />
-			</InputText>
-
-			<InputText
-				v-model="form.email"
-				label="E-mail"
-				type="email"
-			>
-				<InputError :message="form.errors.email" />
-			</InputText>
-
-			<InputText
-				v-model="form.password"
-				label="Password"
-				type="password"
-			>
-				<InputError :message="form.errors.password" />
-			</InputText>
-
-			<InputText
-				v-model="form.password_confirmation"
-				label="Confirm Password"
-				type="password"
-			>
-				<InputError :message="form.errors.password_confirmation" />
-			</InputText>
-
-			<div class="flex items-center justify-end mt-4">
-				<Link
-					:href="route('login')"
-					class="underline text-sm text-gray-400 hover:text-gray-300 rounded-md"
+				<InputText
+					v-model="form.name"
+					label="Name"
 				>
-					Already registered?
-				</Link>
+					<InputError :message="form.errors.name" />
+				</InputText>
 
-				<PrimaryButton
-					class="ms-4"
-					:class="{ 'opacity-25': form.processing }"
-					:disabled="form.processing"
+				<InputText
+					v-model="form.email"
+					label="E-mail"
+					type="email"
 				>
-					Register
-				</PrimaryButton>
-			</div>
-		</form>
+					<InputError :message="form.errors.email" />
+				</InputText>
+
+				<InputText
+					v-model="form.password"
+					label="Password"
+					type="password"
+				>
+					<InputError :message="form.errors.password" />
+				</InputText>
+
+				<InputText
+					v-model="form.password_confirmation"
+					label="Confirm Password"
+					type="password"
+				>
+					<InputError :message="form.errors.password_confirmation" />
+				</InputText>
+
+				<div class="flex items-center justify-end gap-x-2">
+					<Link
+						:href="route('login')"
+						class="underline text-sm text-gray-400 hover:text-gray-300 rounded-md"
+					>
+						Already registered?
+					</Link>
+
+					<PrimaryButton
+						class="btn btn-primary"
+						:class="{ 'opacity-25': form.processing }"
+						:disabled="form.processing"
+					>
+						Register
+					</PrimaryButton>
+				</div>
+			</form>
+		</div>
 	</AppLayout>
 </template>
 

@@ -9,7 +9,6 @@
 			class="input input-bordered w-full"
 			:value="modelValue"
 			required
-			autofocus
 			@input="$emit('update:modelValue', $event.target.value)"
 		>
 		<span class="label-text-alt mt-1">

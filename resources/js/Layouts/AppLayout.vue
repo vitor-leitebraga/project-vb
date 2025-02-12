@@ -4,7 +4,7 @@
 			<div class="flex flex-col gap-y-4 w-full max-w-2xl px-6 lg:max-w-7xl flex-1 py-6">
 				<Header :title="title" />
 				<main class="bg-gray-900 w-full rounded p-4 flex-1 flex">
-					<div class="flex flex-1 justify-center items-center">
+					<div class="flex flex-1 justify-center">
 						<slot />
 					</div>
 				</main>

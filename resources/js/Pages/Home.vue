@@ -1,6 +1,6 @@
 <template>
 	<AppLayout title="Home">
-		<div class="flex bg-gray-600 rounded-xl w-full justify-center p-4 text-2xl">
+		<div class="flex bg-gray-600 rounded-xl w-full justify-center p-4 text-2xl items-center">
 			Welcome to Curotec VB, a new home for your Games.
 		</div>
 	</AppLayout>
