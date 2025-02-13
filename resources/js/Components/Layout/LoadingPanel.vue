@@ -8,12 +8,10 @@
 </template>
 
 <script setup>
-
 defineProps({
 	loading: {
 		type: Boolean,
 		default: false
 	}
 })
-
 </script>

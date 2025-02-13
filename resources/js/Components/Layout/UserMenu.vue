@@ -44,7 +44,6 @@
 
 				<div class="border-t border-gray-200 dark:border-gray-600" />
 
-				<!-- Authentication -->
 				<form @submit.prevent="logout">
 					<DropdownLink as="button">
 						Log Out
@@ -83,5 +82,4 @@ import DropdownLink from "@/Components/Jetstream/DropdownLink.vue";
 const logout = () => {
 	router.post(route("logout"));
 };
-
 </script>

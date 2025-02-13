@@ -32,7 +32,6 @@
 </template>
 
 <script setup>
-
 import InputText from "@/Components/Form/InputText.vue";
 import {computed} from "vue";
 import { useForm, usePage } from "@inertiajs/vue3";
@@ -64,5 +63,4 @@ const submit = () => {
 		form.post(route("games.store"));
 	}
 }
-
 </script>

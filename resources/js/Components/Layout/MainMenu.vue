@@ -19,5 +19,4 @@ defineProps({
 		type: Array
 	}
 })
-
 </script>

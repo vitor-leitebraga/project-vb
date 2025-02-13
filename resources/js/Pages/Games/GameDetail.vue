@@ -1,7 +1,6 @@
 <template>
 	<AppLayout :title="game.name">
 		<div class="flex flex-col items-center bg-base-100 rounded-xl w-full p-6 shadow-lg">
-			<!-- Imagem Grande -->
 			<div class="relative w-full max-w-3xl bg-base-300 rounded-lg shadow-xl overflow-hidden">
 				<img
 					:src="game.image_url"
@@ -9,7 +8,6 @@
 				>
 			</div>
 
-			<!-- Conteúdo -->
 			<div class="flex flex-col items-center w-full max-w-3xl mt-6 text-center">
 				<h1 class="text-3xl font-bold text-white">
 					{{ game.name }}
@@ -24,12 +22,11 @@
 				<span class="text-white font-semibold">{{ game.user.name }}</span>
 			</div>
 
-			<!-- Botão Voltar -->
 			<Link
 				:href="route('games.index')"
 				class="mt-6 btn btn-outline btn-primary"
 			>
-				← Back to Games
+				Back to Games
 			</Link>
 		</div>
 	</AppLayout>

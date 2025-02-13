@@ -16,7 +16,6 @@
 </template>
 
 <script setup>
-
 import { Link } from "@inertiajs/vue3";
 
 defineProps({
@@ -25,5 +24,4 @@ defineProps({
 		default: () => []
 	}
 })
-
 </script>

@@ -16,7 +16,7 @@ import { Head } from "@inertiajs/vue3";
 import MobileMenu from "@/Components/Navigation/MobileMenu.vue";
 import MainMenu from "@/Components/Layout/MainMenu.vue";
 import UserMenu from "@/Components/Layout/UserMenu.vue";
-// import { useThreadFormStore } from "@/Stores/ThreadFormStore.js";
+import navigation from "@/Assets/navigation.js";
 
 defineProps({
 	title: {
@@ -24,17 +24,4 @@ defineProps({
 		type: String
 	}
 })
-
-const navigation = [
-	{id: 1, name: "Home", route: "home"},
-	{id: 2, name: "Games", route: "games.index"}
-]
-
-// const threadFormStore = useThreadFormStore();
-//
-// const goToChats = () => {
-// 	threadFormStore.$reset()
-// 	router.get(route("assistants"))
-// }
-
 </script>

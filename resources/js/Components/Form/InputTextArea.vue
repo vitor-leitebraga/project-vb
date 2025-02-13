@@ -7,7 +7,7 @@
 			:value="modelValue"
 			required
 			@input="$emit('update:modelValue', $event.target.value)"
-		></textarea>
+		/>
 		<span class="label-text-alt mt-1">
 			<slot />
 		</span>
@@ -15,7 +15,6 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
 import FormLabel from "@/Components/Form/FormLabel.vue";
 
 defineProps({
@@ -31,14 +30,4 @@ defineProps({
 });
 
 defineEmits(["update:modelValue"]);
-
-const input = ref(null);
-
-onMounted(() => {
-	if (input.value.hasAttribute("autofocus")) {
-		input.value.focus();
-	}
-});
-
-defineExpose({ focus: () => input.value.focus() });
 </script>

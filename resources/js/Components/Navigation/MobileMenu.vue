@@ -23,5 +23,4 @@ defineProps({
 		type: Array
 	}
 })
-
 </script>

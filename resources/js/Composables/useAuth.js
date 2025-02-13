@@ -8,6 +8,7 @@ export function useGetUserId() {
 	return usePage().props.auth.user?.id ?? null
 }
 
-// export function useHasBuddy(buddyId) {
-// 	return useCheckAuth() ? useBuddyStore().getUserBuddyIds().includes(buddyId) : false
-// }
+export function useIsGameOwner(gameId){
+	const authUser = usePage().props.auth.user;
+	return authUser && authUser.id === gameId;
+}

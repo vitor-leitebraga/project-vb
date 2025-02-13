@@ -24,9 +24,10 @@
 		</div>
 
 		<Link
-			v-if="isOwner"
+			v-if="useIsGameOwner(item.id)"
 			:href="route('games.edit', {game: item})"
-			class="absolute top-2 right-2 bg-yellow-500 text-white px-3 py-1 rounded-lg shadow-lg text-sm hover:bg-yellow-400 transition"
+			class="absolute top-2 right-2 bg-yellow-500 text-white px-3 py-1 rounded-lg shadow-lg text-sm
+				hover:bg-yellow-400 transition"
 		>
 			Edit
 		</Link>
@@ -34,10 +35,10 @@
 </template>
 
 <script setup>
-
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import LoadingPanel from "@/Components/Layout/LoadingPanel.vue";
-import { usePage, Link } from "@inertiajs/vue3";
+import { Link } from "@inertiajs/vue3";
+import { useIsGameOwner } from "@/Composables/useAuth.js";
 
 const props = defineProps({
 	item: {
@@ -47,10 +48,4 @@ const props = defineProps({
 });
 
 const loading = ref(false);
-
-const isOwner = computed(() => {
-	const authUser = usePage().props.auth.user;
-	return authUser && authUser.id === props.item.user_id;
-});
-
 </script>
