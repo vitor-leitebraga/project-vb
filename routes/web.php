@@ -1,8 +1,8 @@
 <?php
 
-use App\Actions\Game\CreateGame;
+use App\Actions\Game\CreateGameRoute;
 use App\Actions\Game\DestroyGame;
-use App\Actions\Game\EditGame;
+use App\Actions\Game\EditGameRoute;
 use App\Actions\Game\IndexGame;
 use App\Actions\Game\ShowGame;
 use App\Actions\Game\StoreGame;
@@ -23,16 +23,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/{slug}/games', UserGames::class)->name('user.games');
+Route::get('/{slug}/games', UserGames::class)->name('user.games')->middleware('verify.user.slug');
 
 Route::prefix('games')->name('games.')->group(function(){
 	Route::get('/', IndexGame::class)->name('index');
 
 	Route::middleware('auth')->group(function(){
-		Route::get('/create', CreateGame::class)->name('create');
+		Route::get('/create', CreateGameRoute::class)->name('create');
 		Route::post('/create', StoreGame::class)->name('store');
 
-		Route::get('/{game}/edit', EditGame::class)->name('edit');
+		Route::get('/{game}/edit', EditGameRoute::class)->name('edit');
 		Route::post('/{game}', UpdateGame::class)->name('update');
 
 		Route::delete('/{game}', DestroyGame::class)->name('destroy');

@@ -5,7 +5,7 @@ namespace App\Actions\Game;
 use Inertia\Inertia;
 use Lorisleiva\Actions\Concerns\AsController;
 
-class CreateGame
+class CreateGameRoute
 {
     use AsController;
 
@@ -13,9 +13,4 @@ class CreateGame
     {
 		return Inertia::render('Games/GameCreate');
     }
-
-	public function getMiddleware(): array
-	{
-		return ['auth'];
-	}
 }

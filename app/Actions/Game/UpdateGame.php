@@ -2,31 +2,25 @@
 
 namespace App\Actions\Game;
 
+use App\Actions\BaseAction;
+use App\DataTransferObjects\GameData;
 use App\Http\Requests\UpdateGameRequest;
 use App\Models\Game;
 use App\Traits\HandlesGameAuthorization;
 use Lorisleiva\Actions\Concerns\AsController;
 
-class UpdateGame
+class UpdateGame extends BaseAction
 {
     use AsController, HandlesGameAuthorization;
 
     public function handle(UpdateGameRequest $request, Game $game)
     {
 		$validated = $request->validated();
+		$gameData = GameData::fromRequest($validated, $request->hasFile('image') ? $request->file('image') : null);
 
-		if ($request->hasFile('image')) {
-			$path = $request->file('image')->store('games', 'public');
-			$validated['image_url'] = url("storage/" . $path);
-		}
+		UpdateGameAction::run($game, $gameData);
 
-		$game->update($validated);
-
-		session()->flash('toast', [
-			'type' => 'success',
-			'message' => 'Game updated successfully!'
-		]);
-
+		$this->createSuccessMessage(trans('messages.game_updated'));
 		return to_route("games.index");
     }
 }

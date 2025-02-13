@@ -7,7 +7,7 @@ use App\Traits\HandlesGameAuthorization;
 use Inertia\Inertia;
 use Lorisleiva\Actions\Concerns\AsController;
 
-class EditGame
+class EditGameRoute
 {
     use AsController, HandlesGameAuthorization;
 

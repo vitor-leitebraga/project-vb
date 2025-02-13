@@ -24,7 +24,7 @@
 		</div>
 
 		<Link
-			v-if="useIsGameOwner(item.id)"
+			v-if="useIsGameOwner(item.user_id)"
 			:href="route('games.edit', {game: item})"
 			class="absolute top-2 right-2 bg-yellow-500 text-white px-3 py-1 rounded-lg shadow-lg text-sm
 				hover:bg-yellow-400 transition"

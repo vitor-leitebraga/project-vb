@@ -2,31 +2,23 @@
 
 namespace App\Actions\Game;
 
+use App\Actions\BaseAction;
+use App\DataTransferObjects\GameData;
 use App\Http\Requests\StoreGameRequest;
-use App\Models\Game;
 use Lorisleiva\Actions\Concerns\AsController;
 
-class StoreGame
+class StoreGame extends BaseAction
 {
     use AsController;
 
     public function handle(StoreGameRequest $request)
     {
 		$validated = $request->validated();
-		$path = $request->file('image')->store('games', 'public');
+		$gameData = GameData::fromRequest($validated, $request->file('image'));
 
-		Game::create([
-			'name' => $validated['name'],
-			'user_id' => auth()->id(),
-			'description' => $validated['description'],
-			'image_url' => url("storage/" . $path)
-		]);
+		CreateGameAction::run($gameData);
 
-		session()->flash('toast', [
-			'type' => 'success',
-			'message' => 'Game created successfully!'
-		]);
-
+		$this->createSuccessMessage(trans('messages.game_created'));
 		return to_route("games.index");
     }
 }

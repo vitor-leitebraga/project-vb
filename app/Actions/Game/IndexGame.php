@@ -12,7 +12,7 @@ class IndexGame
 
     public function handle()
     {
-		$games = Game::orderBy('created_at', 'desc')->paginate(10);
+		$games = Game::latest()->paginate(10);
 		return Inertia::render('Games/GameIndex', compact('games'));
     }
 }
