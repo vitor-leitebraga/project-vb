@@ -38,15 +38,8 @@
 			</template>
 
 			<template #content>
-				<DropdownLink :href="route('profile.show')">
-					Profile
-				</DropdownLink>
-
-				<DropdownLink
-					v-if="$page.props.jetstream.hasApiFeatures"
-					:href="route('api-tokens.index')"
-				>
-					API Tokens
+				<DropdownLink :href="route('user.games', $page.props.auth.user.name.replace(/\s+/g, '-').toLowerCase())">
+					My Games
 				</DropdownLink>
 
 				<div class="border-t border-gray-200 dark:border-gray-600" />

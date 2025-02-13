@@ -11,7 +11,7 @@ class UpdateGameRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+		return auth()->check();
     }
 
     /**
@@ -21,8 +21,10 @@ class UpdateGameRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+		return [
+			'name' => ['sometimes', 'string', 'max:50'],
+			'description' => ['sometimes', 'string', 'max:255'],
+			'image' => ['nullable', 'file', 'mimes:jpeg,jpg,png,gif,avif,webp', 'max:3072']
+		];
     }
 }

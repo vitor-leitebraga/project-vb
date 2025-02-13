@@ -1,14 +1,13 @@
 <template>
 	<label class="form-control w-full">
 		<FormLabel :label="label" />
-		<input
+		<textarea
 			ref="input"
-			:type="type"
-			class="input input-bordered w-full"
+			class="textarea textarea-lg h-40 px-4 py-2"
 			:value="modelValue"
 			required
 			@input="$emit('update:modelValue', $event.target.value)"
-		>
+		></textarea>
 		<span class="label-text-alt mt-1">
 			<slot />
 		</span>
@@ -23,11 +22,6 @@ defineProps({
 	label: {
 		type: String,
 		default: ""
-	},
-
-	type: {
-		type: String,
-		default: "text"
 	},
 
 	modelValue: {

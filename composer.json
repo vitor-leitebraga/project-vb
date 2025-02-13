@@ -12,6 +12,7 @@
         "laravel/jetstream": "^4.3",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "lorisleiva/laravel-actions": "^2.8",
         "tightenco/ziggy": "^2.0"
     },
     "require-dev": {
@@ -20,7 +21,8 @@
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
-        "phpunit/phpunit": "^10.1",
+        "pestphp/pest": "^2.36",
+        "pestphp/pest-plugin-laravel": "^2.4",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {

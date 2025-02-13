@@ -1,10 +1,15 @@
 <?php
 
-use App\Http\Controllers\GameController;
+use App\Actions\Game\CreateGame;
+use App\Actions\Game\DestroyGame;
+use App\Actions\Game\EditGame;
+use App\Actions\Game\IndexGame;
+use App\Actions\Game\ShowGame;
+use App\Actions\Game\StoreGame;
+use App\Actions\Game\UpdateGame;
+use App\Actions\Game\UserGames;
 use App\Http\Controllers\HomeController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +23,22 @@ use Inertia\Inertia;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/{slug}/games', UserGames::class)->name('user.games');
 
-Route::controller(GameController::class)->prefix('games')->name('games.')->group(function(){
-	Route::get('/', 'index')->name('index');
-	Route::post('/', 'store')->name('store');
+Route::prefix('games')->name('games.')->group(function(){
+	Route::get('/', IndexGame::class)->name('index');
+
+	Route::middleware('auth')->group(function(){
+		Route::get('/create', CreateGame::class)->name('create');
+		Route::post('/create', StoreGame::class)->name('store');
+
+		Route::get('/{game}/edit', EditGame::class)->name('edit');
+		Route::post('/{game}', UpdateGame::class)->name('update');
+
+		Route::delete('/{game}', DestroyGame::class)->name('destroy');
+	});
+
+	Route::get('/{game}', ShowGame::class)->name('show');
 });
 
 Route::middleware([
